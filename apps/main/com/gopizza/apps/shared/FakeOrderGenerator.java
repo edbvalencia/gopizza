@@ -4,8 +4,8 @@ package com.gopizza.apps.shared;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -19,28 +19,35 @@ import com.gopizza.shared.domain.PizzaType;
 @Component
 public class FakeOrderGenerator {
 
-    private final RestTemplate rest = new RestTemplate();
+    private static final String ORDER_URL = "http://localhost:%s/api/orders";
+    private static final long INTERVAL = 10000L;
+
+    @Value("${server.port}")
+    private int port;
+
+    private final RestTemplate template = new RestTemplate();
     private final Random random = new Random();
 
-    @Scheduled(fixedRate = 15000)
+    @Scheduled(fixedRate = INTERVAL)
     public void generateOrder() {
-        CreateOrderRequest request = new CreateOrderRequest(
-            NanoIdUtils.randomNanoId(),
-            randomPizzas()
-        );
+        CreateOrderRequest request = randomOrder();
 
         try {
-            rest.postForEntity(
-                "http://localhost:8082/api/orders",
+            template.postForEntity(
+                String.format(ORDER_URL, port),
                 request,
                 Void.class
             );
-
-            System.out.println("pedido generado: " + request.id());
-
         } catch (Exception e) {
-            System.err.println("error enviando pedido: " + e.getMessage());
+            System.err.println("error creando pedido: " + e.getMessage());
         }
+    }
+
+    private CreateOrderRequest randomOrder() {
+        return new CreateOrderRequest(
+            NanoIdUtils.randomNanoId(),
+            randomPizzas()
+        );
     }
 
     private List<OrderPizza> randomPizzas() {
@@ -49,7 +56,7 @@ public class FakeOrderGenerator {
 
         for (int i = 0; i < count; i++) {
             pizzas.add(new OrderPizza(
-                UUID.randomUUID().toString(),
+                NanoIdUtils.randomNanoId(),
                 randomType(),
                 randomSize(),
                 false,

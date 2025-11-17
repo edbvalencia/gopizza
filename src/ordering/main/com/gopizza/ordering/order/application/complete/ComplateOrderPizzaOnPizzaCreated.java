@@ -21,7 +21,6 @@ public class ComplateOrderPizzaOnPizzaCreated {
     public void onRabbit(String json) throws JsonProcessingException {
         var event = mapper.readValue(json, PizzaCreatedEvent.class);
         completer.complete(event.orderId(), event.id());
-        System.out.println("completando pizza: " + event.id());
     }
 
     // @KafkaListener(topics = "pizza.created")

@@ -21,7 +21,6 @@ public class KafkaPublisher {
     public void publish(OrderCreatedEvent event) {
         try {
             var json = mapper.writeValueAsString(event);
-            kafka.send("order.created", json);
         } catch (JsonProcessingException e) {
             System.out.println("error processing event: " + e.getMessage());
         }
@@ -30,7 +29,6 @@ public class KafkaPublisher {
     public void publish(PizzaCreatedEvent event) {
         try {
             var json = mapper.writeValueAsString(event);
-            kafka.send("pizza.created", json);
         } catch (JsonProcessingException e) {
             System.out.println("error processing event: " + e.getMessage());
         }
@@ -39,7 +37,6 @@ public class KafkaPublisher {
     public void publish(OrderCompletedEvent event) {
         try {
             var json = mapper.writeValueAsString(event);
-            kafka.send("order.completed", json);
         } catch (JsonProcessingException e) {
             System.out.println("error processing event: " + e.getMessage());
         }

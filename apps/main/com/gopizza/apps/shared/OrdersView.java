@@ -1,5 +1,8 @@
 package com.gopizza.apps.shared;
 
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import com.gopizza.ordering.order.application.search.OrderResponse;
 import com.gopizza.ordering.order.application.search.OrderSearcher;
 import com.gopizza.shared.domain.OrderPizza;
@@ -10,9 +13,6 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 @Route("")
 public class OrdersView extends VerticalLayout {
