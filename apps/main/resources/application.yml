@@ -22,21 +22,14 @@ spring:
 
 vaadin:
   launch-browser: true
-  url-mapping:
   exclude-urls:
     - /swagger-ui/**
     - /v3/api-docs/**
+    - /swagger-ui.html/**
     - /swagger-resources/**
     - /webjars/swagger-ui/**
 
 springdoc:
-  api-docs:
-    enabled: true
-    path: /v3/api-docs
   swagger-ui:
     enabled: true
-    path: /api/swagger-ui.html
-    tags-sorter: alpha
-    display-request-duration: true
-    filter: true
-    deep-linking: true
+    path: /swagger-ui/index.html

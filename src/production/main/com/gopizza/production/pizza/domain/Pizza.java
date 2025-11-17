@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.List;
 
 import com.gopizza.shared.domain.pizza.PizzaIngredient;
+import com.gopizza.shared.domain.pizza.PizzaIngredientsMapper;
 import com.gopizza.shared.domain.pizza.PizzaSize;
 import com.gopizza.shared.domain.pizza.PizzaType;
 
@@ -40,10 +41,17 @@ public class Pizza {
         String orderId,
         PizzaType type,
         PizzaSize size,
-        int creationTimeMinutes,
-        List<PizzaIngredient> ingredients
+        int creationTimeMinutes
     ) {
-        return new Pizza(id, orderId, type, size, ingredients, creationTimeMinutes, Instant.now());
+        return new Pizza(
+            id,
+            orderId,
+            type,
+            size,
+            PizzaIngredientsMapper.generate(type),
+            creationTimeMinutes,
+            Instant.now()
+        );
     }
 
     public String id() {
