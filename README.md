@@ -31,6 +31,8 @@ Todo el código fuente se encuentra dentro del directorio:
 ```
 src/ contiene la lógica de dominio, aplicación e infraestructura.
 apps/ contiene únicamente las capas de entrada (controladores y endpoints).
+target/** ignorar
+src/main/** ignorar
 ```
 
 ---
