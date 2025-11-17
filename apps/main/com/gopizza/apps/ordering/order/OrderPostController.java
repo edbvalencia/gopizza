@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gopizza.ordering.order.application.create.OrderCreator;
-
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -15,11 +13,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderPostController {
 
-    private final OrderCreator creator;
-
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateOrderRequest request) {
-        creator.create(request.id(), request.pizzas());
         return ResponseEntity.noContent().build();
     }
 

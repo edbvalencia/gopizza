@@ -1,4 +1,7 @@
-package com.gopizza.shared.domain;
+package com.gopizza.shared.domain.order;
+
+import com.gopizza.shared.domain.pizza.PizzaSize;
+import com.gopizza.shared.domain.pizza.PizzaType;
 
 public record OrderPizza(
     String id,

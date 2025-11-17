@@ -2,7 +2,7 @@ package com.gopizza.apps.shared;
 
 import com.gopizza.ordering.order.application.search.OrderResponse;
 import com.gopizza.ordering.order.application.search.OrderSearcher;
-import com.gopizza.shared.domain.OrderPizza;
+import com.gopizza.shared.domain.order.OrderPizza;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;

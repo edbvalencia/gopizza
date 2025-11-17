@@ -3,9 +3,9 @@ package com.gopizza.production.pizza.domain;
 import java.time.Instant;
 import java.util.List;
 
-import com.gopizza.shared.domain.PizzaIngredient;
-import com.gopizza.shared.domain.PizzaSize;
-import com.gopizza.shared.domain.PizzaType;
+import com.gopizza.shared.domain.pizza.PizzaIngredient;
+import com.gopizza.shared.domain.pizza.PizzaSize;
+import com.gopizza.shared.domain.pizza.PizzaType;
 
 public class Pizza {
 

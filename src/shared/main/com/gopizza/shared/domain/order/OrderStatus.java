@@ -1,4 +1,4 @@
-package com.gopizza.shared.domain;
+package com.gopizza.shared.domain.order;
 
 public enum OrderStatus {
     PROCESSING,

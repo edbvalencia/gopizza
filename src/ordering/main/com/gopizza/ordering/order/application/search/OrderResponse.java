@@ -4,8 +4,8 @@ import java.time.Instant;
 import java.util.List;
 
 import com.gopizza.ordering.order.domain.Order;
-import com.gopizza.shared.domain.OrderPizza;
-import com.gopizza.shared.domain.OrderStatus;
+import com.gopizza.shared.domain.order.OrderPizza;
+import com.gopizza.shared.domain.order.OrderStatus;
 
 public record OrderResponse(
     String id,

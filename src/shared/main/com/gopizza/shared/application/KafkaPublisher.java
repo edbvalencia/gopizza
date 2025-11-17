@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gopizza.shared.domain.OrderCompletedEvent;
-import com.gopizza.shared.domain.OrderCreatedEvent;
-import com.gopizza.shared.domain.PizzaCreatedEvent;
+import com.gopizza.shared.domain.order.OrderCompletedEvent;
+import com.gopizza.shared.domain.order.OrderCreatedEvent;
+import com.gopizza.shared.domain.pizza.PizzaCreatedEvent;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.gopizza.shared.domain;
+package com.gopizza.shared.domain.order;
 
 import java.util.List;
 
