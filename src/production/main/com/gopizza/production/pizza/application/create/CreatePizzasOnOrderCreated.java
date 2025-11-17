@@ -1,7 +1,5 @@
 package com.gopizza.production.pizza.application.create;
 
-import org.springframework.amqp.rabbit.annotation.Queue;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -13,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class CreatePizzaOnOrderCreated {
+public class CreatePizzasOnOrderCreated {
 
     private static final int MIN_SECONDS = 1;
     private static final int MAX_SECONDS = 5;
@@ -21,8 +19,7 @@ public class CreatePizzaOnOrderCreated {
     private final PizzaCreator creator;
     private final ObjectMapper mapper;
 
-    @RabbitListener(queuesToDeclare = @Queue("order.created"))
-    public void onRabbit(String json) throws JsonProcessingException {
+    public void on(String json) throws JsonProcessingException {
         OrderCreatedEvent event = mapper.readValue(json, OrderCreatedEvent.class);
 
         event.pizzas().forEach(pizza -> {
