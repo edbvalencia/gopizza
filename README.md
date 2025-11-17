@@ -24,6 +24,17 @@ El sistema está dividido en dos módulos:
 
 ---
 
+## Estructura del Proyecto
+
+Todo el código fuente se encuentra dentro del directorio:
+
+```
+src/ contiene la lógica de dominio, aplicación e infraestructura.
+apps/ contiene únicamente las capas de entrada (controladores y endpoints).
+```
+
+---
+
 ## Requisitos de Implementación
 
 Antes de iniciar el desarrollo, es obligatorio ejecutar:
