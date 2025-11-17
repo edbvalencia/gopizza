@@ -20,7 +20,7 @@ import com.gopizza.shared.domain.PizzaType;
 public class FakeOrderGenerator {
 
     private static final String ORDER_URL = "http://localhost:%s/api/orders";
-    private static final long INTERVAL = 10000L;
+    private static final long INTERVAL = 15000L;
 
     @Value("${server.port}")
     private int port;
