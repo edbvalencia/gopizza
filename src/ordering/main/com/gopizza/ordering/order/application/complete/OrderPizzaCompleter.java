@@ -1,4 +1,4 @@
-package com.gopizza.ordering.order.application.increment;
+package com.gopizza.ordering.order.application.complete;
 
 import java.time.Instant;
 
@@ -13,13 +13,13 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class OrderIncrementer {
+public class OrderPizzaCompleter {
 
     private final OrderRepository repository;
     private final RabbitPublisher rabbitPublisher;
     private final KafkaPublisher kafkaPublisher;
 
-    public void increment(String orderId, String pizzaId) {
+    public void complete(String orderId, String pizzaId) {
         var order = repository.search(orderId);
         if (order == null) return;
 

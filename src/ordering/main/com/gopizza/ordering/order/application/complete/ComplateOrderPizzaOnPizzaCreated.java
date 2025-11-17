@@ -1,4 +1,4 @@
-package com.gopizza.ordering.order.application.increment;
+package com.gopizza.ordering.order.application.complete;
 
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -12,22 +12,21 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class IncrementOrderOnPizzaCreated {
+public class ComplateOrderPizzaOnPizzaCreated {
 
-    private final OrderIncrementer incrementer;
+    private final OrderPizzaCompleter completer;
     private final ObjectMapper mapper;
 
     @RabbitListener(queuesToDeclare = @Queue("pizza.created"))
     public void onRabbit(String json) throws JsonProcessingException {
         var event = mapper.readValue(json, PizzaCreatedEvent.class);
-        incrementer.increment(event.orderId(), event.id());
+        completer.complete(event.orderId(), event.id());
     }
 
     // @KafkaListener(topics = "pizza.created")
     public void onKafka(String json) throws JsonProcessingException {
         var event = mapper.readValue(json, PizzaCreatedEvent.class);
-
-        incrementer.increment(event.orderId(), event.id());
+        completer.complete(event.orderId(), event.id());
     }
 
 }
